@@ -25,15 +25,10 @@ public class ScoreDisplay extends PApplet
 
 	public void setup() 
 	{
-		loadScore();
+		//loadScore();
+		printScores();
 	}
 
-	public void loadScore()
-	{
-		for(int i=0; i<notes.length(); i++){
-		int parsedString = Integer.parseInt(String.valueOf(c));
-		}
-	}
 
 	//to print the notes
 	public void printScores() 
@@ -44,9 +39,22 @@ public class ScoreDisplay extends PApplet
 		}
 	}
 
+	//Drawing the 5 lines using loops
+	public void staveline()
+	{
+		float border = height * 0.4f;
+		float range = 120;
+		for(float f = 0; f <= range ; f += 30)
+        {
+		float y = map(f, 0, range, height - border, border);
+        line(border, y, width - border, y);
+		}
+	}
+
 	public void draw()
 	{
 		background(255);
+		staveline();
 		
 	}
 
