@@ -32,20 +32,19 @@ public class ScoreDisplay extends PApplet {
 
 	public void loadScore() 
 	{
-		char ch = '1';
-		int num1 = ch - '0';
-
-		char c = '2'; // c holds the character 7 (55)
-		int num2 = c - '0';
 		Note note = null;
 		
 
 		for (int i = 0; i < score.length(); i++) // Print the string
 		{
+			if(score.contains("2"))
+			{
 			Note n = notes.get(i);
 			note = new Note(n.getNote(), n.getDuration());
             notes.add(note);
+			//note.setDuration(Integer.parseInt(score.substring(2)));
 			//System.out.println(score.substring(i, i + 1));
+			}
 		}
 	}
 
@@ -60,7 +59,7 @@ public class ScoreDisplay extends PApplet {
 	public void staveline() {
 
 		float range = 120;
-		for (float f = 0; f <= range; f += 10) {
+		for (float f = 0; f <= range; f += 30) {
 			float y = map(f, 0, range, height - border, border);
 			line(border, y, width - border, y);
 		}
@@ -77,7 +76,7 @@ public class ScoreDisplay extends PApplet {
 	{
 		for(int i = 0 ; i < notes.size(); i ++)
         {
-            float y = map(i, 0, notes.size(), border, height - border);
+            float y1 = map(i, 0, notes.size(), border, height - border);
             Note n = notes.get(i);
             float x1 = map(border, 1, 0, leftBorder, width - border);
             float x2 = map(border, 1, 0, leftBorder, width - border);
@@ -88,7 +87,7 @@ public class ScoreDisplay extends PApplet {
 			line(i, x1, x1, x2);
             fill(255);
             textAlign(CENTER, CENTER);
-            //text(n.getNote(), 20, y);
+            text(n.getNote(), 20, y1);
         }
 	}
 }
