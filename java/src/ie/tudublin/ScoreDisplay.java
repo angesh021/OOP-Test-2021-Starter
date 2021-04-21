@@ -60,7 +60,7 @@ public class ScoreDisplay extends PApplet {
 
 		float range = 120;
 		for (float f = 0; f <= range; f += 30) {
-			float y = map(f, 0, range, height - border, border);
+			float y = map(f, -100, range, height - border, border);
 			line(border, y, width - border, y);
 		}
 	}
@@ -80,12 +80,10 @@ public class ScoreDisplay extends PApplet {
             Note n = notes.get(i);
             float x1 = map(border, 1, 0, leftBorder, width - border);
             float x2 = map(border, 1, 0, leftBorder, width - border);
-            int c = (int) map(i, 0, notes.size(), 0, 255);
             noStroke();
-            fill(c, 255, 255);
+            fill(255, 255, 255);
             ellipse(x1, x2, x1, x2);
 			line(i, x1, x1, x2);
-            fill(255);
             textAlign(CENTER, CENTER);
             text(n.getNote(), 20, y1);
         }
